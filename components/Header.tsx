@@ -24,7 +24,7 @@ function Header() {
                     className="
                     text-2xl
                     font-bold
-                    text-amber-900
+                    text-black
                     hover:opacity-50
                     cursor-pointer
                     mx-auto
@@ -46,7 +46,7 @@ function Header() {
                         rounded
                         focus:outline-none
                       focus:ring-2
-                      focus:ring-amber-600
+                      focus:ring-red-500
                       focus:ring-opacity-50
                       border
                       w-full
@@ -63,8 +63,8 @@ function Header() {
                     sm:flex-none
                     iems-center
                     space-x-2
-                    bg-amber-500
-                    hover:bg-amber-700
+                    bg-gray-900
+                    hover:bg-gray-700
                     text-white
                     font-bold py-2
                     px-4 rounded"
@@ -82,8 +82,8 @@ function Header() {
                                 href="/orders"
                                 className="flex-1 relative  flex justify-center sm:
                             jutstify-start sm:flex-none items-center space-x-2
-                            bg-amber-500
-                         hover:bg-amber-700 text
+                            bg-red-500
+                         hover:bg-red-700 text
                          text-white font-bold py-2 px-4 rounded"
                             >
 
