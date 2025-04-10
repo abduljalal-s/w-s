@@ -7,7 +7,7 @@ export const getAllProducts = async () => {
             _type == "product"
         ] | order(name asc)
         
-        `)
+        `);
 
     try {
         const products = await sanityFetch({

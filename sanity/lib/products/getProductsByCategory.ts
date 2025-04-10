@@ -1,29 +1,29 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "../live";
 
-export const searchProductsByName = async (searchParam: string) => {
+export const getProductsByCategory = async (categorySlug: string) => {
 
 
-    const PRODUCT_SEARCH_QUERY = defineQuery(`    
+    const PRODUCTS_BY_CATEGORY_QUERY = defineQuery(`    
         *[
             _type == "product"
-            && name match $searchParam
+            && references(*[_type == "category" && slug.current == $categorySlug]._id)
         ] | order(name asc)
         `);
 
     try {
         // use sanityfetch to send the query and pass the searchParam with a wildcard
         const product = await sanityFetch({
-            query: PRODUCT_SEARCH_QUERY,
+            query: PRODUCTS_BY_CATEGORY_QUERY,
             params: {
-                searchParam: `${searchParam}*`,//append wildcard for partial matching
+                categorySlug,
             },
         });
 
         // return the list of za products or an empty array if none found
         return product.data || [];
     } catch (error) {
-        console.error("Error fetching name:", error);
+        console.error("Error fetching products by category:", error);
         return [];
 
     }
