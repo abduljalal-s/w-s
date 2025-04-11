@@ -1,11 +1,17 @@
 "use client";
 
+import useBasketStore from "@/app/(store)/store";
 import { ClerkLoaded, SignedIn, SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import { PackageIcon, TrolleyIcon } from "@sanity/icons";
 import Form from "next/form";
 import Link from "next/link";
+
+
+
 function Header() {
     const { user } = useUser();
+    const itemCount = useBasketStore((state) =>
+        state.items.reduce((total, item) => total + item.quantity, 0));
 
     const createClerkPasskey = async () => {
         try {
@@ -70,9 +76,10 @@ function Header() {
                     px-4 rounded"
                     >
                         <TrolleyIcon className="w-6 h-6" />
-                        { /*span  item  count once global state is implemenet* */}
-                        <span> My Basket
+
+                        <span className=" absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">{itemCount}
                         </span>
+                        <span>My Basket</span>
                     </Link>
 
                     { /* User area*/}
